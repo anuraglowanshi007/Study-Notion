@@ -2,6 +2,8 @@ import React from 'react'
 import Template from '../components/core/Auth/Template'
 import loginImg from '../assets/Images/login.webp'
 
+//login page 
+
 const Login = () => {
   return (
     <Template
