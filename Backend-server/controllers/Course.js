@@ -19,7 +19,11 @@ exports.createCourse = async (req, res) => {
 			status,
 			instructions,
 		} = req.body;
+<<<<<<< HEAD
               console.log(req.files);
+=======
+
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 		// Get thumbnail image from request files
 		const thumbnail = req.files.thumbnailImage;
 
@@ -61,7 +65,10 @@ exports.createCourse = async (req, res) => {
 				message: "Category Details Not Found",
 			});
 		}
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 		// Upload the Thumbnail to Cloudinary
 		const thumbnailImage = await uploadImageToCloudinary(
 			thumbnail,

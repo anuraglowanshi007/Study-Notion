@@ -10,7 +10,10 @@ require("dotenv").config();
 
 // Signup Controller for Registering USers
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 exports.signup = async (req, res) => {
 	try {
 		// Destructure fields from the request body
@@ -24,6 +27,7 @@ exports.signup = async (req, res) => {
 			contactNumber,
 			otp,
 		} = req.body;
+<<<<<<< HEAD
 
 		// Check if all required fields are present
 		if (!firstName || !lastName || !email || !password || !confirmPassword || !otp) {
@@ -33,11 +37,32 @@ exports.signup = async (req, res) => {
 			});
 		}
 
+=======
+		// Check if All Details are there or not
+		if (
+			!firstName ||
+			!lastName ||
+			!email ||
+			!password ||
+			!confirmPassword ||
+			!otp
+		) {
+			return res.status(403).send({
+				success: false,
+				message: "All Fields are required",
+			});
+		}
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 		// Check if password and confirm password match
 		if (password !== confirmPassword) {
 			return res.status(400).json({
 				success: false,
+<<<<<<< HEAD
 				message: "Password and Confirm Password do not match. Please try again.",
+=======
+				message:
+					"Password and Confirm Password do not match. Please try again.",
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 			});
 		}
 
@@ -51,38 +76,70 @@ exports.signup = async (req, res) => {
 		}
 
 		// Find the most recent OTP for the email
+<<<<<<< HEAD
 		const latestOTP = await OTP.findOne({ email }).sort({ createdAt: -1 });
 		if (!latestOTP || otp !== latestOTP.otp) {
 			// OTP not found or does not match
 			return res.status(400).json({
 				success: false,
 				message: "Invalid OTP",
+=======
+		const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
+		console.log(response);
+		if (response.length === 0) {
+			// OTP not found for the email
+			return res.status(400).json({
+				success: false,
+				message: "The OTP is not valid",
+			});
+		} else if (otp !== response[0].otp) {
+			// Invalid OTP
+			return res.status(400).json({
+				success: false,
+				message: "The OTP is not valid",
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 			});
 		}
 
 		// Hash the password
 		const hashedPassword = await bcrypt.hash(password, 10);
 
+<<<<<<< HEAD
 		// Determine if user is approved based on account type
 		const approved = (accountType === "Instructor") ? false : true;
 
 		// Create a profile for the user
+=======
+		// Create the user
+		let approved = "";
+		approved === "Instructor" ? (approved = false) : (approved = true);
+
+		// Create the Additional Profile For User
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 		const profileDetails = await Profile.create({
 			gender: null,
 			dateOfBirth: null,
 			about: null,
 			contactNumber: null,
 		});
+<<<<<<< HEAD
 
 		// Create the user
+=======
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 		const user = await User.create({
 			firstName,
 			lastName,
 			email,
 			contactNumber,
 			password: hashedPassword,
+<<<<<<< HEAD
 			accountType,
 			approved,
+=======
+			accountType: accountType,
+			approved: approved,
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 			additionalDetails: profileDetails._id,
 			image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
 		});
@@ -93,10 +150,17 @@ exports.signup = async (req, res) => {
 			message: "User registered successfully",
 		});
 	} catch (error) {
+<<<<<<< HEAD
 		console.error("Error registering user:", error);
 		return res.status(500).json({
 			success: false,
 			message: "User registration failed. Please try again.",
+=======
+		console.error(error);
+		return res.status(500).json({
+			success: false,
+			message: "User cannot be registered. Please try again.",
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 		});
 	}
 };
@@ -167,8 +231,11 @@ exports.login = async (req, res) => {
 		});
 	}
 };
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
 // Send OTP For Email Verification
 exports.sendotp = async (req, res) => {
 	try {

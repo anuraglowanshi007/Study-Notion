@@ -8,7 +8,10 @@ This starter pack includes a basic setup for using **Tailwind CSS with React**. 
 
 1. Clone the repository to your local machine.
     ```sh
+<<<<<<< HEAD
     git clone 
+=======
+>>>>>>> 66b0db4272a4fa7b493aa898a84f6a1dc91f8388
     ```
 
 1. Install the required packages.
