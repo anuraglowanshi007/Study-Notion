@@ -14,6 +14,7 @@ const {
   RESETPASSWORD_API,
 } = endpoints
 
+ //Otp email verify code 
 export function sendOtp(email, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
@@ -42,6 +43,7 @@ export function sendOtp(email, navigate) {
   }
 }
 
+// signUp connection code 
 export function signUp(
   accountType,
   firstName,
@@ -83,6 +85,7 @@ export function signUp(
   }
 }
 
+// login connection code
 export function login(email, password, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
