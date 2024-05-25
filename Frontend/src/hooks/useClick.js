@@ -9,7 +9,7 @@ export default function useClick(ref, handler) {
       if (!ref.current || ref.current.contains(event.target)) {
         return;
       }
-      // Otherwise, call the provided handler function
+      // Otherwise, call the provided handler functioncls
       handler(event);
     };
 
@@ -24,3 +24,4 @@ export default function useClick(ref, handler) {
     };
   }, [ref, handler]); // Only run this effect when the ref or handler function changes
 }
+
