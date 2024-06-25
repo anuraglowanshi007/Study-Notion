@@ -101,7 +101,7 @@ function App() {
             >
               <Dashboard />
             </Suspense>
-          }
+          } 
         >
           <Route
             path="/dashboard/my-profile"
